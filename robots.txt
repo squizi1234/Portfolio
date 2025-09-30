@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://squizi1234.github.io/Portfolio/sitemap.xml

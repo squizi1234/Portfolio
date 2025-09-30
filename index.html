@@ -295,6 +295,119 @@
       line-height: 1.8;
     }
 
+    .reviews-section {
+      background: white;
+      padding: 50px;
+      margin-bottom: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .reviews-intro {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      border-left: 5px solid #667eea;
+    }
+
+    .reviews-intro h3 {
+      color: #2d3748;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reviews-intro p {
+      color: #4a5568;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .reviews-intro ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+
+    .reviews-intro li {
+      padding: 8px 0;
+      color: #4a5568;
+      position: relative;
+      padding-left: 35px;
+      line-height: 1.8;
+    }
+
+    .reviews-intro li::before {
+      position: absolute;
+      left: 0;
+      font-size: 1.3em;
+    }
+
+    .reviews-intro li:nth-child(1)::before { content: '🚫'; }
+    .reviews-intro li:nth-child(2)::before { content: '🙅‍♂️'; }
+    .reviews-intro li:nth-child(3)::before { content: '⚠️'; }
+    .reviews-intro li:nth-child(4)::before { content: '🤝'; }
+
+    .important-info {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    .important-info h3 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .important-info p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      opacity: 0.95;
+    }
+
+    .important-info a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+    }
+
+    .important-info a:hover {
+      opacity: 0.8;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.2);
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-box span {
+      font-size: 2em;
+    }
+
+    .comments-container {
+      margin-top: 40px;
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 15px;
+    }
+
     .cta-section {
       text-align: center;
       padding: 80px 20px;
@@ -381,6 +494,10 @@
       color: rgba(255,255,255,0.7);
     }
 
+    footer p {
+      margin: 10px 0;
+    }
+
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2.5em;
@@ -390,6 +507,10 @@
         padding: 30px 25px;
       }
       
+      .reviews-section {
+        padding: 30px 20px;
+      }
+      
       .services-grid,
       .projects-grid {
         grid-template-columns: 1fr;
@@ -397,6 +518,11 @@
       
       .stats {
         gap: 20px;
+      }
+
+      .reviews-intro,
+      .important-info {
+        padding: 20px;
       }
     }
   </style>
@@ -425,17 +551,7 @@
       </div>
     </div>
   </section>
-          <section class="section">
-        <h2 class="section-title">💬 Отзывы</h2>
-        <p>Оставьте свой комментарий с помощью GitHub-аккаунта:</p>
-        <script src="https://utteranc.es/client.js"
-              repo="squizi1234/Sqwepi"
-              issue-term="pathname"
-              theme="github-light"
-              crossorigin="anonymous"
-              async>
-        </script>
-      </section>
+
   <main>
     <div class="container">
       
@@ -552,6 +668,57 @@
         </div>
       </section>
 
+      <section class="reviews-section">
+        <h2 class="section-title">💬 Отзывы клиентов</h2>
+        
+        <div class="reviews-intro">
+          <h3>📝 Правила оставления отзывов</h3>
+          <p>Пожалуйста, оставляйте свои честные отзывы о работе с нами. Ваше мнение очень важно!</p>
+          <ul>
+            <li>Запрещено использование нецензурной лексики</li>
+            <li>Запрещены оскорбления участников или сотрудников</li>
+            <li>Комментарии, нарушающие правила, будут удалены</li>
+            <li>Будьте честны при написании отзывов</li>
+          </ul>
+          <p style="margin-top: 20px;"><strong>Спасибо за понимание и сотрудничество! 🙏</strong></p>
+        </div>
+
+        <div class="important-info">
+          <h3>⚠️ Важная информация</h3>
+          
+          <div class="contact-box">
+            <span>📬</span>
+            <div>
+              <strong>Связь с нами:</strong><br>
+              Telegram: <a href="https://t.me/Sqweeezey_LZT" target="_blank">@Sqweeezey_LZT</a>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">
+            <strong>🛡️ Официальные представители:</strong><br>
+            Все товары от Sqwepi™ распространяются только от имени Sqwepi™ и его официальных представителей.<br>
+            Список представителей: <a href="https://squizi1234.github.io/Portfolio" target="_blank">squizi1234.github.io/Portfolio</a>
+          </p>
+
+          <p style="margin-top: 20px;">
+            <strong>📢 Официальный канал:</strong><br>
+            Telegram: <a href="https://t.me/SqwepiDev" target="_blank">@SqwepiDev</a><br>
+            <em style="opacity: 0.9;">Все остальные каналы и аккаунты не являются официальными и не связаны с Sqwepi. Перепроверяйте контакты представителей, чтобы не попасться на мошенников!</em>
+          </p>
+        </div>
+
+        <div class="comments-container">
+          <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.5em;">Оставьте свой отзыв через GitHub:</h3>
+          <script src="https://utteranc.es/client.js"
+                repo="squizi1234/Sqwepi"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+          </script>
+        </div>
+      </section>
+
       <section class="cta-section">
         <h2>Готовы начать проект?</h2>
         <p style="font-size: 1.3em; margin-bottom: 40px; opacity: 0.95;">Свяжитесь со мной и получите индивидуальное решение</p>
@@ -570,7 +737,6 @@
       </section>
 
     </div>
-
   </main>
 
   <footer>

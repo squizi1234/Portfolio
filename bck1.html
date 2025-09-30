@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sqwepi™ — Инновационные решения от Sqweeezey</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.3;
+    }
+
+    .logo-container {
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-container img {
+      max-width: 280px;
+      height: auto;
+      filter: drop-shadow(0 10px 40px rgba(0,0,0,0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .tagline {
+      font-size: 1.4em;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 40px;
+      font-weight: 300;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px 40px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: 800;
+      color: white;
+      display: block;
+    }
+
+    .stat-label {
+      color: rgba(255,255,255,0.9);
+      font-size: 1em;
+      margin-top: 5px;
+    }
+
+    main {
+      background: #f8f9fa;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 50px;
+      margin-bottom: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #667eea;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 35px;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(102,126,234,0.3);
+      border-color: #667eea;
+    }
+
+    .service-icon {
+      font-size: 3em;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1.5em;
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .service-card li {
+      padding: 8px 0;
+      color: #4a5568;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .security-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 50px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+    }
+
+    .security-section .section-title {
+      color: white;
+    }
+
+    .security-section .section-title::after {
+      background: white;
+    }
+
+    .security-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .security-item {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 15px;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .security-item:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .security-item .icon {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #667eea;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+    }
+
+    .project-card h3 {
+      font-size: 1.4em;
+      color: #2d3748;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-card p {
+      color: #4a5568;
+      line-height: 1.8;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 20px;
+      margin-top: 40px;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 18px 45px;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: #f8f9fa;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #667eea;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      padding: 15px 30px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .contact-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #2d3748;
+      color: rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .section {
+        padding: 30px 25px;
+      }
+      
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <section class="hero">
+    <div class="logo-container">
+      <img src="https://github.com/squizi1234/Sqwepi/blob/main/sqwepi-high-resolution-logo-transparent.png?raw=true" alt="Sqwepi Logo">
+    </div>
+    <h1>Sqwepi™</h1>
+    <p class="tagline">Инновационные решения от Sqweeezey InK</p>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-number">179+</span>
+        <span class="stat-label">Репозиториев</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">40+</span>
+        <span class="stat-label">Успешных кейсов</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Качество</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      
+      <section class="section">
+        <h2 class="section-title">🚀 Наши услуги</h2>
+        <div class="services-grid">
+          
+          <div class="service-card">
+            <span class="service-icon">🤖</span>
+            <h3>Боты и автоматизация</h3>
+            <ul>
+              <li>Telegram-боты любой сложности</li>
+              <li>Парсеры и скрапперы</li>
+              <li>Автоматизация бизнес-процессов</li>
+              <li>Интеграция с API</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <span class="service-icon">⚡</span>
+            <h3>ESP32 / Arduino</h3>
+            <ul>
+              <li>Разработка скетчей</li>
+              <li>Автоматизация записи прошивок</li>
+              <li>Предварительная шифрация</li>
+              <li>Защита от взлома и копирования</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <span class="service-icon">⚙️</span>
+            <h3>Системные решения</h3>
+            <ul>
+              <li>Твики для Windows</li>
+              <li>Оптимизация производительности</li>
+              <li>Снижение инпут-лага</li>
+              <li>Улучшение FPS</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <span class="service-icon">💼</span>
+            <h3>Кастомные решения</h3>
+            <ul>
+              <li>Разработка под ваши задачи</li>
+              <li>Любая сложность проекта</li>
+              <li>Индивидуальный подход</li>
+              <li>Техническая поддержка</li>
+            </ul>
+          </div>
+          
+        </div>
+      </section>
+
+      <section class="security-section">
+        <h2 class="section-title">🛡 Sqwepi Secure</h2>
+        <p style="font-size: 1.2em; margin-bottom: 20px; opacity: 0.95;">Фирменная система защиты для всех наших решений</p>
+        
+        <div class="security-features">
+          <div class="security-item">
+            <span class="icon">🔐</span>
+            <h3>Шифрация</h3>
+            <p>Надежная защита кода и данных от несанкционированного доступа</p>
+          </div>
+          
+          <div class="security-item">
+            <span class="icon">🚫</span>
+            <h3>Блокировка</h3>
+            <p>Предотвращение попыток взлома и копирования</p>
+          </div>
+          
+          <div class="security-item">
+            <span class="icon">✅</span>
+            <h3>Лицензирование</h3>
+            <p>Защита лицензий и контроль доступа</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">💎 Избранные проекты</h2>
+        <div class="projects-grid">
+          
+          <div class="project-card">
+            <h3>🔐 Умный замок на Arduino</h3>
+            <p>ИК-замок с кодовой системой, LCD-дисплеем, EEPROM-памятью и мотором. Полная защита от взлома и отказа.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>📡 IR Tool</h3>
+            <p>Универсальный пульт, копирующий сигналы ИК-устройств. Поддержка макросов и Bluetooth.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>🛍️ Бот-магазин</h3>
+            <p>Автоматизированная система продаж Discord Nitro и Telegram Premium с полной интеграцией платежей.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>🌐 Парсеры маркетплейсов</h3>
+            <p>Сбор данных с популярных площадок: цены, описания, фото. Экспорт в Excel и Telegram.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>📊 Автоматизация статистики</h3>
+            <p>Обработка PDF, логов касс и таблиц. Автоматический подсчет зарплаты и отчетность.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>🎯 Аим-тренер Unity</h3>
+            <p>Игра для тренировки меткости с множеством режимов и детальной статистикой.</p>
+          </div>
+          
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Готовы начать проект?</h2>
+        <p style="font-size: 1.3em; margin-bottom: 40px; opacity: 0.95;">Свяжитесь со мной и получите индивидуальное решение</p>
+        
+        <div class="cta-buttons">
+          <a href="https://kwork.ru/user/sqweeezey" target="_blank" class="btn">Посмотреть Kwork</a>
+          <a href="https://github.com/squizi1234" target="_blank" class="btn btn-secondary">GitHub</a>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://t.me/Sqweeezey_LZT" target="_blank" class="contact-link">
+            <span>📬</span>
+            <span>Telegram: @Sqweeezey_LZT</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sqwepi™ by Sqweeezey InK. Все права защищены.</p>
+    <p style="margin-top: 10px; opacity: 0.7;">Инновационные решения для вашего бизнеса</p>
+  </footer>
+
+</body>
+</html>

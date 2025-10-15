@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оплата прошла успешно — Sqwepi™</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/9755/9755406.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 30px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-icon {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      animation: scaleIn 0.5s ease 0.2s both;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .checkmark {
+      font-size: 60px;
+      color: white;
+      animation: checkmark 0.5s ease 0.4s both;
+    }
+
+    @keyframes checkmark {
+      0% {
+        transform: scale(0) rotate(-45deg);
+      }
+      50% {
+        transform: scale(1.2) rotate(0deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #2d3748;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .message {
+      font-size: 1.2em;
+      color: #4a5568;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      font-size: 1.8em;
+      min-width: 40px;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 0.9em;
+      color: #718096;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      font-size: 1.1em;
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(102,126,234,0.5);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid #e2e8f0;
+      color: #718096;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .footer-note a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 25px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="success-icon">
+      <div class="checkmark">✓</div>
+    </div>
+
+    <h1>Оплата прошла успешно!</h1>
+    <p class="message">Спасибо за ваш заказ. Транзакция завершена успешно.</p>
+
+    <div class="info-box">
+      <div class="info-item">
+        <span class="info-icon">📋</span>
+        <div class="info-text">
+          <div class="info-label">Номер заказа</div>
+          <div class="info-value" id="orderId">Загрузка...</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon">💳</span>
+        <div class="info-text">
+          <div class="info-label">Сумма платежа</div>
+          <div class="info-value" id="amount">Загрузка...</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon">📅</span>
+        <div class="info-text">
+          <div class="info-label">Дата и время</div>
+          <div class="info-value" id="datetime">Загрузка...</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon">✅</span>
+        <div class="info-text">
+          <div class="info-label">Статус</div>
+          <div class="info-value" style="color: #48bb78;">Оплачено</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="https://squizi1234.github.io/Portfolio/" class="btn btn-primary">На главную</a>
+      <a href="https://t.me/Sqweeezey_LZT" target="_blank" class="btn btn-secondary">Связаться с нами</a>
+    </div>
+
+    <div class="footer-note">
+      <p><strong>📬 Подтверждение отправлено</strong></p>
+      <p>Детали заказа и чек будут отправлены на ваш Telegram в ближайшее время.</p>
+      <p style="margin-top: 15px;">
+        Если у вас возникли вопросы, свяжитесь с нами через 
+        <a href="https://t.me/Sqweeezey_LZT" target="_blank">Telegram</a> 
+        или посетите наш 
+        <a href="https://t.me/SqwepiDev" target="_blank">канал</a>.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Получение параметров из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Генерация ID заказа если не передан
+    const orderId = urlParams.get('order_id') || 'SQW-' + Date.now().toString().slice(-8);
+    const amount = urlParams.get('amount') || '---';
+    
+    // Форматирование даты
+    const now = new Date();
+    const datetime = now.toLocaleString('ru-RU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    // Вывод данных
+    document.getElementById('orderId').textContent = orderId;
+    document.getElementById('amount').textContent = amount;
+    document.getElementById('datetime').textContent = datetime;
+  </script>
+</body>
+</html>

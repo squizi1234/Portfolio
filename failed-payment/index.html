@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ошибка оплаты — Sqwepi™</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/9755/9755406.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.3;
+      animation: wave 20s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateX(0) scale(1); }
+      50% { transform: translateX(-50px) scale(1.1); }
+    }
+
+    .container {
+      background: white;
+      max-width: 650px;
+      width: 100%;
+      border-radius: 30px;
+      padding: 60px 50px;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+      animation: slideUp 0.7s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .error-icon {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 35px;
+      animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(252, 92, 125, 0.4);
+    }
+
+    .error-icon::before {
+      content: '';
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border: 3px solid rgba(252, 92, 125, 0.3);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0) rotate(-180deg);
+      }
+      to {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .cross {
+      font-size: 70px;
+      color: white;
+      font-weight: bold;
+      animation: crossmark 0.6s ease 0.5s both;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @keyframes crossmark {
+      0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.3) rotate(15deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #2d3748;
+      margin-bottom: 25px;
+      font-weight: 800;
+      animation: fadeIn 0.8s ease 0.3s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message {
+      font-size: 1.3em;
+      color: #4a5568;
+      margin-bottom: 45px;
+      line-height: 1.7;
+      animation: fadeIn 0.8s ease 0.4s both;
+    }
+
+    .error-box {
+      background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 35px;
+      border-left: 6px solid #fc5c7d;
+      animation: fadeIn 0.8s ease 0.5s both;
+      box-shadow: 0 5px 20px rgba(252, 92, 125, 0.15);
+    }
+
+    .error-title {
+      font-size: 1.2em;
+      color: #c53030;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .error-description {
+      color: #742a2a;
+      line-height: 1.7;
+      font-size: 1.05em;
+    }
+
+    .reasons-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      padding: 35px;
+      border-radius: 20px;
+      margin-bottom: 35px;
+      text-align: left;
+      animation: fadeIn 0.8s ease 0.6s both;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .reasons-title {
+      font-size: 1.3em;
+      color: #2d3748;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .reason-item:last-child {
+      border-bottom: none;
+    }
+
+    .reason-item:hover {
+      transform: translateX(5px);
+      padding-left: 10px;
+    }
+
+    .reason-icon {
+      font-size: 1.8em;
+      min-width: 35px;
+      margin-top: 3px;
+    }
+
+    .reason-text {
+      flex: 1;
+      color: #4a5568;
+      line-height: 1.7;
+      font-size: 1.05em;
+    }
+
+    .reason-text strong {
+      color: #2d3748;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.05em;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 35px;
+      animation: fadeIn 0.8s ease 0.7s both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 20px 45px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.15em;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 8px 25px rgba(102,126,234,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(102,126,234,0.6);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 3px solid #667eea;
+      box-shadow: 0 5px 20px rgba(102,126,234,0.2);
+    }
+
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+    }
+
+    .help-section {
+      margin-top: 45px;
+      padding: 35px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 25px;
+      color: white;
+      animation: fadeIn 0.8s ease 0.8s both;
+      box-shadow: 0 10px 40px rgba(102,126,234,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .help-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .help-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .help-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .help-text {
+      line-height: 1.8;
+      opacity: 0.95;
+      margin-bottom: 25px;
+      font-size: 1.05em;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 15px 30px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-link:hover {
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 45px 30px;
+      }
+
+      .error-icon {
+        width: 110px;
+        height: 110px;
+      }
+
+      .error-icon::before {
+        width: 130px;
+        height: 130px;
+      }
+
+      .cross {
+        font-size: 55px;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .message {
+        font-size: 1.15em;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .contact-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-icon">
+      <div class="cross">✕</div>
+    </div>
+
+    <h1>Оплата не прошла</h1>
+    <p class="message">К сожалению, не удалось завершить транзакцию</p>
+
+    <div class="error-box">
+      <div class="error-title">
+        <span>⚠️</span>
+        <span id="errorTitle">Ошибка обработки платежа</span>
+      </div>
+      <div class="error-description" id="errorDescription">
+        Платеж был отклонен. Пожалуйста, проверьте данные карты и попробуйте снова.
+      </div>
+    </div>
+
+    <div class="reasons-box">
+      <div class="reasons-title">
+        <span>🔍</span>
+        <span>Возможные причины</span>
+      </div>
+      
+      <div class="reason-item">
+        <span class="reason-icon">💳</span>
+        <div class="reason-text">
+          <strong>Недостаточно средств</strong>
+          На карте не хватает денег для проведения платежа
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <span class="reason-icon">🔒</span>
+        <div class="reason-text">
+          <strong>Блокировка банком</strong>
+          Банк заблокировал транзакцию по соображениям безопасности
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <span class="reason-icon">❌</span>
+        <div class="reason-text">
+          <strong>Неверные данные</strong>
+          Проверьте номер карты, срок действия и CVV-код
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <span class="reason-icon">🌐</span>
+        <div class="reason-text">
+          <strong>Технические проблемы</strong>
+          Временные неполадки с платежной системой
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <span class="reason-icon">🚫</span>
+        <div class="reason-text">
+          <strong>Лимиты карты</strong>
+          Превышен дневной или месячный лимит операций
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="javascript:history.back()" class="btn btn-primary">🔄 Попробовать снова</a>
+      <a href="https://squizi1234.github.io/Portfolio/" class="btn btn-secondary">🏠 На главную</a>
+    </div>
+
+    <div class="help-section">
+      <div class="help-title">
+        <span>💬</span>
+        <span>Нужна помощь?</span>
+      </div>
+      <div class="help-text">
+        Если проблема повторяется, свяжитесь с нами для получения помощи. 
+        Мы поможем разобраться в ситуации и найдем альтернативный способ оплаты.
+      </div>
+      <div class="contact-links">
+        <a href="https://t.me/Sqweeezey_LZT" target="_blank" class="contact-link">
+          <span>📬</span>
+          <span>Написать в Telegram</span>
+        </a>
+        <a href="https://t.me/SqwepiDev" target="_blank" class="contact-link">
+          <span>📢</span>
+          <span>Наш канал</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorCode = urlParams.get('error') || 'unknown';
+    const errorMessage = urlParams.get('message');
+
+    const errorTitles = {
+      'insufficient_funds': 'Недостаточно средств',
+      'card_declined': 'Карта отклонена',
+      'invalid_card': 'Неверные данные карты',
+      'expired_card': 'Карта просрочена',
+      'security_block': 'Блокировка безопасности',
+      'limit_exceeded': 'Превышен лимит',
+      'technical_error': 'Техническая ошибка',
+      'timeout': 'Превышено время ожидания',
+      'unknown': 'Ошибка обработки платежа'
+    };
+
+    const errorDescriptions = {
+      'insufficient_funds': 'На карте недостаточно средств для проведения операции. Пополните баланс и попробуйте снова.',
+      'card_declined': 'Банк отклонил транзакцию. Свяжитесь с вашим банком для уточнения причины.',
+      'invalid_card': 'Проверьте правильность введенных данных: номер карты, срок действия и CVV-код.',
+      'expired_card': 'Срок действия карты истек. Используйте другую карту для оплаты.',
+      'security_block': 'Банк заблокировал транзакцию по соображениям безопасности. Свяжитесь с банком.',
+      'limit_exceeded': 'Превышен лимит операций по карте. Попробуйте позже или используйте другую карту.',
+      'technical_error': 'Произошла техническая ошибка. Попробуйте повторить операцию через несколько минут.',
+      'timeout': 'Время ожидания истекло. Попробуйте повторить операцию.',
+      'unknown': 'Платеж был отклонен. Пожалуйста, проверьте данные карты и попробуйте снова.'
+    };
+
+    document.getElementById('errorTitle').textContent = errorTitles[errorCode] || errorTitles['unknown'];
+    document.getElementById('errorDescription').textContent = errorMessage || errorDescriptions[errorCode] || errorDescriptions['unknown'];
+  </script>
+</body>
+</html>
